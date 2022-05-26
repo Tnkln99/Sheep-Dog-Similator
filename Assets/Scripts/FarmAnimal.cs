@@ -29,6 +29,7 @@ public class FarmAnimal : MonoBehaviour
     {
         state = State.Walking;
         stateChangeTime = Time.time;
+        directionChangeTime = Time.time;
     }
 
     // Update is called once per frame
@@ -55,14 +56,11 @@ public class FarmAnimal : MonoBehaviour
                 Walking();
                 break;
             case State.Stop:
-                Stop();
                 break;
             case State.RunAway:
                 RunAway();
                 break;
         }
-        
-        Debug.Log(state);
     }
     
     void Walking()
@@ -80,10 +78,5 @@ public class FarmAnimal : MonoBehaviour
     {
         movement = new Vector2(transform.position.x - dog.transform.position.x, transform.position.y - dog.transform.position.y);
         transform.Translate(movement.normalized * runAwaySpeed * Time.deltaTime);
-    }
-    //To implement stop animation later
-    void Stop()
-    {
-        
     }
 }

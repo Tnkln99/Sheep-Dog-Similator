@@ -5,35 +5,33 @@ using UnityEngine;
 
 public class Dog : MonoBehaviour
 {
-    private float speed = 10f;
+    private float speed = 2f;
+    private float runSpeed = 5f;
+    
+    
     private Vector2 movement { get; set; }
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
 
     [SerializeField] private MobileJoyStick _joyStick;
+    [SerializeField] private ButtonRunFast _buttonRunFast;
     
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Hello");
-        rb = GetComponent<Rigidbody2D>();
-
+        _rb = GetComponent<Rigidbody2D>();
     }
     
     // Update is called once per frame
     void Update()
     {
-        movement = new Vector2(_joyStick.offset.x * speed, _joyStick.offset.y * speed);
+        if(_buttonRunFast.isFast)
+            movement = _joyStick.offset.normalized * runSpeed;
+        else 
+            movement = _joyStick.offset.normalized * speed;
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = movement;
+        _rb.velocity = movement;
     }
-
-
-    private void Move(Vector2 input)
-    {
-        
-    }
-    
 }
