@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FarmAnimal : MonoBehaviour
 {
@@ -8,10 +10,13 @@ public class FarmAnimal : MonoBehaviour
     {
         Walking,
         Stop,
-        RunAway
+        RunAway,
+        CollisionEnv
     }
 
     [SerializeField] private Dog dog;
+    
+    private Rigidbody2D _rb;
 
     private State state;
     
@@ -22,11 +27,13 @@ public class FarmAnimal : MonoBehaviour
     private Vector2 movement;
     
     private float speed = 1f;
+
+    private Vector2 collidedEnv;
     
-    private float runAwaySpeed = 2f;
     // Start is called before the first frame update
     void Start()
     {
+        _rb = GetComponent<Rigidbody2D>();
         state = State.Walking;
         stateChangeTime = Time.time;
         directionChangeTime = Time.time;
@@ -56,13 +63,28 @@ public class FarmAnimal : MonoBehaviour
                 Walking();
                 break;
             case State.Stop:
+                Stop();
                 break;
             case State.RunAway:
                 RunAway();
                 break;
+            case State.CollisionEnv:
+                GetAwayFromEnv();
+                break;
         }
+        //Debug.Log(state);;
     }
-    
+
+    private void FixedUpdate()
+    {
+        _rb.velocity = movement.normalized * speed;
+    }
+
+    void Stop()
+    {
+        movement = Vector2.zero;
+    }
+
     void Walking()
     {
         float currtime = Time.time;
@@ -71,12 +93,24 @@ public class FarmAnimal : MonoBehaviour
             directionChangeTime = currtime;
             movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         }
-        transform.Translate(movement.normalized * speed * Time.deltaTime);
     }
 
     void RunAway()
     {
         movement = new Vector2(transform.position.x - dog.transform.position.x, transform.position.y - dog.transform.position.y);
-        transform.Translate(movement.normalized * runAwaySpeed * Time.deltaTime);
+    }
+    
+    void GetAwayFromEnv()
+    {
+        movement = new Vector2( collidedEnv.x - transform.position.x, collidedEnv.y - transform.position.y);
+    }
+    
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.CompareTag("CollisionEnv"))
+        {
+            collidedEnv = col.transform.position;
+            state = State.CollisionEnv;
+        }
     }
 }

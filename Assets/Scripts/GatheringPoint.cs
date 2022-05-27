@@ -15,11 +15,10 @@ public class GatheringPoint : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.CompareTag("Sheep"))
+        if (col.gameObject.CompareTag("Sheep"))
         {
-            Debug.Log("Sheep entered");
             Destroy(col.gameObject);
             numberOfAnimals--;
         }
