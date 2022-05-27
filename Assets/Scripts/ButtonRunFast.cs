@@ -13,13 +13,11 @@ public class ButtonRunFast : MonoBehaviour, IPointerUpHandler, IPointerDownHandl
     public void OnPointerDown(PointerEventData eventData)
     {
         isFast = true;
-        Debug.Log(isFast);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         isFast = false;
-        Debug.Log(isFast);
     }
 }
 
