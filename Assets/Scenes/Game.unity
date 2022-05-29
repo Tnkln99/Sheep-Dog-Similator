@@ -1153,7 +1153,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 983532747}
   - component: {fileID: 983532746}
   - component: {fileID: 983532749}
-  - component: {fileID: 983532748}
+  - component: {fileID: 983532750}
   m_Layer: 0
   m_Name: CollisionsTop
   m_TagString: Untagged
@@ -3269,19 +3269,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &983532748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983532744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60af8576362209345ba0e0ede929b247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
 --- !u!19719996 &983532749
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -3294,10 +3281,22 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &983532750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983532744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4ab92ab55486647a030d566051e535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1087503610
 GameObject:
   m_ObjectHideFlags: 0
@@ -21078,7 +21077,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1800369882
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -21329,7 +21328,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
