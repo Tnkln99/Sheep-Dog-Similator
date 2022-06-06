@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea8586611fd5a44cbb108af4c53e32c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfSheep: 3
 --- !u!483693784 &416486586
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -3172,11 +3173,11 @@ RectTransform:
   m_Father: {fileID: 619135894}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 644.18256, y: -162.74602}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -200, y: 100}
   m_SizeDelta: {x: 145, y: 145}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &1087503612
 MonoBehaviour:
   m_ObjectHideFlags: 0
