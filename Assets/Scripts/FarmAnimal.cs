@@ -72,7 +72,7 @@ public class FarmAnimal : MonoBehaviour
                 GetAwayFromEnv();
                 break;
         }
-        //Debug.Log(state);;
+        //Debug.Log(state);
     }
 
     private void FixedUpdate()
